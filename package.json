@@ -1,0 +1,19 @@
+{
+  "name": "tw-show",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tw",
+    "film"
+  ],
+  "author": "Arteom Mukha <muchaarteom@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.7.0"
+  }
+}
