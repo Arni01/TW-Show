@@ -24,13 +24,6 @@ const filename = (ext) => (isDev ? `[name].${ext}` : `[name].[hash].${ext}`);
 
 const plugins = () => {
   const base = [
-    // new HTMLWebpackPlugin({
-    //   template: '../',
-    //   // minify: {
-    //   //   collapseWhitespace: isProd,
-    //   // },
-    // }),
-
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [

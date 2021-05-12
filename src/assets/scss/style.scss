@@ -1,12 +1,14 @@
 @import '~normalize.css';
-@import 'roboto.css';
+@import 'fonts.css';
+
+$white: #fff;
 
 html {
   font-size: 10px;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Mulish', sans-serif;
   background-color: #000;
   color: white;
   font-size: 18px;
@@ -15,8 +17,74 @@ body {
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   max-width: 144rem;
   margin: 0 auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding: 1.5rem;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding-left: 0;
+
+  &-item {
+    margin: 0 1.5rem;
+  }
+  &-link {
+    font-size: 16px;
+    font-weight: 700;
+    color: rgba($white, 0.5);
+    position: relative;
+    text-decoration: none;
+
+    &.active {
+      color: rgba($white, 1);
+      &::after {
+        content: '';
+        width: 100%;
+        display: block;
+        height: 0.2rem;
+        margin-top: 0.5rem;
+        background: linear-gradient(316.53deg, #26fff2 13.2%, #326cff 71.54%);
+        border-radius: 5rem;
+      }
+    }
+  }
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding-left: 0;
+
+  &-item {
+    margin-left: 7.5rem;
+  }
+
+  &-btn {
+    background-color: transparent;
+    border: none;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &_search {
+      background: url('../images/header/search.svg') center;
+      width: 1.8rem;
+      height: 1.8rem;
+    }
+    &_notice {
+      background: url('../images/header/notice.svg') center;
+      width: 2.13rem;
+      height: 2.35rem;
+    }
+    &_account {
+      background: url('../images/header/account.svg') center;
+      width: 1.8rem;
+      height: 1.92rem;
+    }
+  }
 }
