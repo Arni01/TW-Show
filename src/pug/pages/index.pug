@@ -8,10 +8,23 @@ html(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="icon" href="favicon.ico" type="image/ico")
     title= pageTitle
-    //- style 
-    //-   include ~normalize.css
   body 
     include ../includes/modules/header
-    .container 
-      h1 Pug test kek
+    
+    section.section-banner 
+      .container.container-banner
+        img(src="./assets/images/banner.png" alt="Banner").container-banner_image 
+        .banner
+          h1.banner-title Zack Snyder's Justice League
+          .banner-info 
+            span.banner-info_year 2021
+            span.banner-info_age 18+
+            span.banner-info_time 4h 2min
+            span.banner-info_rating 8.8
+          p.banner-text Determined to ensure Superman's ultimate sacrifice was not in vain, Bruce Wayne aligns forces with Diana Prince with plans to recruit a team of metahumans to protect the world from an approaching threat of catastrophic proportions.
+          .banner-control 
+            button.banner-control_btn.btn-play Watch
+            button.banner-control_btn.banner-control_btn-info More information
+
+
     include ../includes/modules/footer
