@@ -2,7 +2,11 @@
 @import 'fonts.css';
 
 $white: #fff;
-$bg-gradient: linear-gradient(316.53deg, #26fff2 13.2%, #326cff 71.54%);
+$bg-gradient: linear-gradient(
+  316.53deg,
+  rgb(38, 255, 242) 13.2%,
+  rgb(50, 108, 255) 71.54%
+);
 $bg-gradient-safe: rgb(50, 108, 255);
 
 html {
@@ -16,6 +20,11 @@ body {
   font-size: 1.8rem;
 }
 
+button {
+  &:focus {
+    outline: none;
+  }
+}
 .container {
   max-width: 144rem;
   padding-left: 1.5rem;
@@ -59,8 +68,12 @@ body {
     font-size: 16px;
     font-weight: 700;
     color: rgba($white, 0.5);
-    // position: relative;
     text-decoration: none;
+
+    &:hover {
+      color: rgba($white, 1);
+      transition: 0.2s ease color;
+    }
 
     &.active {
       color: rgba($white, 1);
@@ -71,7 +84,6 @@ body {
         left: 0;
         right: 0;
         bottom: -0.8rem;
-        // width: 100%;
         display: block;
         height: 0.2rem;
         margin-top: 0.5rem;
@@ -122,8 +134,52 @@ body {
   }
 }
 
+.section {
+  &__title {
+    font-size: 2.8rem;
+    line-height: 2rem;
+    font-weight: 700;
+    position: relative;
+    margin-bottom: 4.7rem;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: calc(50% - 2rem);
+      left: -0.4rem;
+      display: block;
+      width: 0.8rem;
+      height: 3.5rem;
+      background: $bg-gradient-safe;
+      background: $bg-gradient;
+      border-radius: 5rem;
+    }
+
+    &-link {
+      color: $white;
+
+      text-decoration: none;
+      padding-left: 1.4rem;
+      padding-right: 1.9rem;
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: calc(50% - 0.5rem);
+        width: 9px;
+        height: 9px;
+        border-top: 2px solid $white;
+        border-right: 2px solid $white;
+        transform: rotate(45deg);
+      }
+    }
+  }
+}
+
 .section-banner {
   border-bottom: 0.2rem solid #2f2e2e;
+  margin-bottom: 6.9rem;
 }
 
 .container-banner {
@@ -227,11 +283,20 @@ body {
       font-weight: 800;
       font-size: 1.6rem;
       line-height: 2rem;
+      cursor: pointer;
     }
     .btn-play {
       background: $bg-gradient-safe;
       background: $bg-gradient;
       color: $white;
+      box-shadow: 0px 4px 50px rgba($bg-gradient-safe, 0.5);
+      transition: 0.2s ease all;
+
+      &:hover {
+        box-shadow: none;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
 
       &::before {
         content: '';
@@ -249,6 +314,46 @@ body {
       background-color: $white;
       color: #323232;
       margin-left: 2.2rem;
+      // transition: 0.2s ease background-color, 0.2s ease color;
+      transition: 0.2s ease all;
+
+      &:hover {
+        background-color: transparent;
+        color: $white;
+      }
     }
+  }
+}
+
+.movies {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4rem;
+
+  &-item {
+    flex: 0 0 calc((100% / 6) - 8rem);
+    box-shadow: none;
+    transition: 0.2s ease all;
+
+    &:hover {
+      box-shadow: 0px 4px 25px 10px #26fff2;
+      background-color: rgba(38, 255, 242, 0.62);
+    }
+  }
+  &__img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    border-radius: 2.1rem;
+  }
+
+  &__link {
+    display: block;
+    position: relative;
+    width: 20.6rem;
+    height: 30.9rem;
   }
 }

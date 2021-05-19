@@ -13,7 +13,7 @@ html(lang="en")
     
     section.section-banner 
       .container.container-banner
-        img(src="./assets/images/banner.png" alt="Banner").container-banner_image 
+        img(src="./assets/images/banner.jpg" alt="Banner").container-banner_image 
         .banner
           h1.banner-title Zack Snyder's Justice League
           .banner-info 
@@ -25,6 +25,30 @@ html(lang="en")
           .banner-control 
             button.banner-control_btn.btn-play Watch
             button.banner-control_btn.banner-control_btn-info More information
+    section.section
+      .container
+        h2.section__title 
+          a(href="#").section__title-link Trending Movies
+        .movies 
+          .movies-item 
+            a(href="#").movies__link
+              img(src="./assets/images/movie_1.jpg", alt="Movie After").movies__img
+          .movies-item 
+            a(href="#").movies__link
+              img(src="./assets/images/movie_2.jpg", alt="Movie After").movies__img
+          .movies-item 
+            a(href="#").movies__link
+              img(src="./assets/images/movie_3.jpg", alt="Movie After").movies__img
+          .movies-item 
+            a(href="#").movies__link
+              img(src="./assets/images/movie_4.jpg", alt="Movie After").movies__img
+          .movies-item 
+            a(href="#").movies__link
+              img(src="./assets/images/movie_5.jpg", alt="Movie After").movies__img
+          .movies-item 
+            a(href="#").movies__link
+              img(src="./assets/images/movie_6.jpg", alt="Movie After").movies__img
 
 
+    
     include ../includes/modules/footer
