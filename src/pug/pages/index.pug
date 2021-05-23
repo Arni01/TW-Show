@@ -23,9 +23,9 @@ html(lang="en")
             span.banner-info_rating 8.8
           p.banner-text Determined to ensure Superman's ultimate sacrifice was not in vain, Bruce Wayne aligns forces with Diana Prince with plans to recruit a team of metahumans to protect the world from an approaching threat of catastrophic proportions.
           .banner-control 
-            button.banner-control_btn.btn-play Watch
-            button.banner-control_btn.banner-control_btn-info More information
-    section.section
+            button.btn.banner-control__play Watch
+            button.btn.banner-control__info More information
+    section.section.section__movies
       .container
         h2.section__title 
           a(href="#").section__title-link Trending Movies
@@ -48,7 +48,51 @@ html(lang="en")
           .movies-item 
             a(href="#").movies__link
               img(src="./assets/images/movie_6.jpg", alt="Movie After").movies__img
-
+        button.btn See more
+    section.section.section__genres
+      .container
+        h2.section__title 
+          a(href="#").section__title-link Popular Genres
+        .genres 
+          .genres-item.genres-item__romance
+            a(href="#").genres__link
+              img(src="./assets/images/genre_1.svg", alt="Romance").genres__img
+              h3 Romance
+          .genres-item.genres-item__drama 
+            a(href="#").genres__link
+              img(src="./assets/images/genre_2.svg", alt="Drama").genres__img
+              h3 Drama
+          .genres-item.genres-item__historical
+            a(href="#").genres__link
+              img(src="./assets/images/genre_3.svg", alt="Historical").genres__img
+              h3 Historical
+          .genres-item.genres-item__action
+            a(href="#").genres__link
+              img(src="./assets/images/genre_4.svg", alt="Action").genres__img
+              h3 Action
+          .genres-item.genres-item__sci-fi 
+            a(href="#").genres__link
+              img(src="./assets/images/genre_5.svg", alt="Sci-fi").genres__img
+              h3 Sci-fi
+          .genres-item.genres-item__horror
+            a(href="#").genres__link
+              img(src="./assets/images/genre_6.svg", alt="Horror").genres__img
+              h3 Horror
+          .genres-item.genres-item__comedy 
+            a(href="#").genres__link
+              img(src="./assets/images/genre_7.svg", alt="Comedy").genres__img
+              h3 Comedy
+          .genres-item.genres-item__documentary 
+            a(href="#").genres__link
+              img(src="./assets/images/genre_8.svg", alt="Documentary").genres__img
+              h3 Documentary
+    section.section.section__regist
+      .container
+        .regist
+          .regist-title 
+            h2 Are You New Here ?&nbsp; Don’t Wait, Register Now.
+          button.btn Register Now     
+          
 
     
     include ../includes/modules/footer
