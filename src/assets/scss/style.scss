@@ -181,21 +181,35 @@ button {
 
 .section-banner {
   border-bottom: 0.2rem solid #2f2e2e;
-  margin-bottom: 6.9rem;
+  // margin-bottom: 6.9rem;
 }
 
 .container-banner {
-  position: relative;
+  // position: relative;
   align-items: center;
-  min-height: 76.5rem;
+  height: 76.5rem;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 
   &_image {
-    position: absolute;
-    display: block;
-    right: -6rem;
-    top: 0;
+    position: relative;
+    // display: block;
+    // right: -6rem;
+    // top: 0;
+    height: 100%;
     z-index: -1;
+    flex-grow: 1;
+    flex-shrink: 1;
+    vertical-align: middle;
+
+    img {
+      width: 100%;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 }
 
@@ -223,14 +237,15 @@ button {
 }
 
 .banner {
-  position: absolute;
+  // position: absolute;
+  flex-grow: 1;
   max-width: 55.9rem;
-  top: 0;
-  bottom: 0;
-  left: 0;
+  // top: 0;
+  // bottom: 0;
+  // left: 0;
   padding-left: 1.6rem;
   margin-right: 2.9rem;
-  padding-top: 12.1rem;
+  // padding-top: 12.1rem;
   background: #010101;
   box-shadow: 100px 0px 100px #000000;
 
@@ -277,13 +292,6 @@ button {
     }
     &_rating {
       &::after {
-        content: '';
-        display: inline-block;
-        width: 1.6rem;
-        height: 1.5rem;
-        background-image: url('../images/star.svg');
-        background-repeat: no-repeat;
-        background-size: cover;
         margin-left: 1.1rem;
       }
     }
@@ -327,30 +335,37 @@ button {
   }
 }
 
+.rating {
+  &::after {
+    content: '';
+    display: inline-block;
+    width: 1.6rem;
+    height: 1.5rem;
+    background-image: url('../images/star.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
 .movies {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 4rem;
   margin-bottom: 5.3rem;
+  justify-content: space-between;
 
   &-item {
-    flex: 0 0 calc((100% / 6) - 8rem);
-  }
-  &__img {
-    position: absolute;
-    height: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
+    flex: 0 0 calc((100% / 4) - 8rem);
   }
 
   &__link {
-    display: block;
+    display: flex;
+    flex-direction: column;
     position: relative;
-    width: 20.6rem;
-    height: 30.9rem;
+    text-decoration: none;
+    width: 33rem;
+    height: 25rem;
     overflow: hidden;
     border-radius: 2.1rem;
     box-shadow: none;
@@ -358,23 +373,94 @@ button {
 
     &:hover {
       box-shadow: 0px 4px 25px 10px #26fff2;
-      background-color: rgba(38, 255, 242, 0.62);
-
-      &::before {
-        content: '';
-        // width: 100%;
-        // height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 100%;
-        background-color: rgba(#c2c2c2, 0.8);
-        z-index: 2;
-      }
 
       .movies__img {
-        filter: blur(5px);
+        img {
+          filter: blur(5px);
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 100%;
+          background-color: rgba(#000, 0.7);
+          z-index: -1;
+        }
+      }
+
+      .active-link {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 2rem;
+    text-align: center;
+    color: $white;
+    padding: 0.5rem;
+  }
+
+  &__img {
+    position: relative;
+    flex-grow: 1;
+    border-radius: 2rem;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      height: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: -2;
+    }
+  }
+
+  .active-link {
+    display: none;
+  }
+
+  &__info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0.5rem;
+    color: $white;
+    padding: 0 0.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+
+    &-overview {
+      margin: 0;
+      margin-top: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 500;
+
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 8;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    &-year {
+      margin-right: auto;
+    }
+
+    &-rating {
+      margin-left: auto;
+
+      &::after {
+        margin-left: 0.5rem;
       }
     }
   }

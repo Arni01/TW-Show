@@ -40,14 +40,18 @@ const plugins = () => {
     new MiniCssExtractPlugin({
       filename: filename('css'),
     }),
-    ...PAGES.map(
-      (page) =>
-        new HTMLWebpackPlugin({
-          template: `${PAGES_DIR}/${page}`,
-          filename: `./${page.replace(/\.pug/, '.html')}`,
-          pretty: true,
-        })
-    ),
+    new HTMLWebpackPlugin({
+      template: `${PAGES_DIR}/index.pug`,
+      filename: `./index.html`,
+      pretty: true,
+      chunks: ['index'],
+    }),
+    new HTMLWebpackPlugin({
+      template: `${PAGES_DIR}/movie.pug`,
+      filename: `./movie.html`,
+      pretty: true,
+      chunks: ['movie'],
+    }),
   ];
 
   if (isProd) {
@@ -59,11 +63,16 @@ const plugins = () => {
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
-  entry: './index.js',
+  entry: {
+    index: './index.js',
+    movie: './js/movie.js',
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: filename('js'),
+    // library: '[name]',
   },
+  devtool: 'eval',
   devServer: {
     port: 4200,
   },
