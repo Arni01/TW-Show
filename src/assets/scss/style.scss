@@ -306,6 +306,12 @@ button {
   }
   &-control {
     margin-top: 3.4rem;
+
+    a {
+      display: inline-block;
+      text-decoration: none;
+    }
+
     &__play {
       &::before {
         content: '';

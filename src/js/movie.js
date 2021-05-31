@@ -8,13 +8,20 @@ const URLMovieVideo = `https://api.themoviedb.org/3/movie/${idMovie}/videos?api_
 
 const containerBanner = document.querySelector('.container-banner');
 
-const renderBanner = (movieInfo, age, movieWatch) => {
+const renderBanner = (movieInfo, certification, movieWatch) => {
   let year = movieInfo['release_date'].split('-')[0];
+  let linkVideo = '';
+
+  if (movieWatch !== undefined) {
+    linkVideo = `<a href="https://www.youtube.com/watch?v=${movieWatch.key}" class="btn banner-control__play" target="_blank">Watch 
+    ${movieWatch.type}</a>`;
+  }
+
   return `<div class="banner">
             <h1 class="banner-title">${movieInfo.title}</h1>
             <div class="banner-info"> 
               <span class="banner-info_year">${year}</span>
-              <span class="banner-info_age">${age.certification}</span>
+              <span class="banner-info_age">${certification}</span>
               <span class="banner-info_time">${Math.floor(
                 movieInfo.runtime / 60
               )}h ${movieInfo.runtime % 60}min</span>
@@ -24,9 +31,7 @@ const renderBanner = (movieInfo, age, movieWatch) => {
             </div>
             <p class="banner-text">${movieInfo.overview}</p>
             <div class="banner-control"> 
-              <button class="btn banner-control__play" data-play="play">Watch ${
-                movieWatch.type
-              }</button>
+              ${linkVideo}
             </div>
           </div>
           <div class="container-banner_image">
@@ -46,12 +51,20 @@ const requestTMD = (url) => {
 };
 
 const findRelisData = (el) => {
-  console.log(
-    el.results.find((item) => item['iso_3166_1'] === 'RU')['release_dates']
-  );
-  return el.results.find((item) => item['iso_3166_1'] === 'RU')[
-    'release_dates'
-  ][0];
+  let relisData = { release_dates: [{ certification: 'R' }] };
+  let certification;
+  el = el.results.find((item) => item['iso_3166_1'] === 'US') || relisData;
+  // el = el['release_dates'] || certification;
+  for (const item of el['release_dates']) {
+    if (item['certification'] !== '') {
+      certification = item['certification'];
+      break;
+    }
+  }
+  // return el.results.find((item) => item['iso_3166_1'] === 'US')[
+  //   'release_dates'
+  // ][0];
+  return certification;
 };
 
 let allInfoMovie = requestTMD(URLInfoMovie);
@@ -60,7 +73,6 @@ let movieVideo = requestTMD(URLMovieVideo);
 
 Promise.all([allInfoMovie, reliseData, movieVideo]).then((responses) => {
   let responsesJSON = responses.map((el) => JSON.parse(el));
-  // responses.forEach((response) => JSON.parse(response));
   containerBanner.insertAdjacentHTML(
     'beforeend',
     renderBanner(
