@@ -52,11 +52,17 @@ const plugins = () => {
       pretty: true,
       chunks: ['movie'],
     }),
+    new HTMLWebpackPlugin({
+      template: `${PAGES_DIR}/movies.pug`,
+      filename: `./movies.html`,
+      pretty: true,
+      chunks: ['movies'],
+    }),
   ];
 
-  if (isProd) {
-    base.push(new BundleAnalyzerPlugin());
-  }
+  // if (isProd) {
+  //   base.push(new BundleAnalyzerPlugin());
+  // }
   return base;
 };
 

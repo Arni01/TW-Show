@@ -1,11 +1,7 @@
 import '../assets/scss/style.scss';
+import URLImg, { requestTMD } from './module/request';
 
 const idMovie = window.location.search.slice(4);
-const URLImg = 'https://image.tmdb.org/t/p/original';
-const URLInfoMovie = `https://api.themoviedb.org/3/movie/${idMovie}?api_key=6e6736e6ab781fd3a1a7c3b7add7654b&language=en-US`;
-const URLRelisData = `https://api.themoviedb.org/3/movie/${idMovie}/release_dates?api_key=6e6736e6ab781fd3a1a7c3b7add7654b`;
-const URLMovieVideo = `https://api.themoviedb.org/3/movie/${idMovie}/videos?api_key=6e6736e6ab781fd3a1a7c3b7add7654b&language=en-US`;
-
 const containerBanner = document.querySelector('.container-banner');
 
 const renderBanner = (movieInfo, certification, movieWatch) => {
@@ -16,6 +12,8 @@ const renderBanner = (movieInfo, certification, movieWatch) => {
     linkVideo = `<a href="https://www.youtube.com/watch?v=${movieWatch.key}" class="btn banner-control__play" target="_blank">Watch 
     ${movieWatch.type}</a>`;
   }
+
+  document.title = movieInfo.title;
 
   return `<div class="banner">
             <h1 class="banner-title">${movieInfo.title}</h1>
@@ -36,49 +34,38 @@ const renderBanner = (movieInfo, certification, movieWatch) => {
           </div>
           <div class="container-banner_image">
             <img class="container-banner_image" src="${
-              URLImg + movieInfo['backdrop_path']
+              URLImg.original + movieInfo['backdrop_path']
             }" alt="${movieInfo.title}">
           </div>`;
-};
-
-const requestTMD = (url) => {
-  let request = new Promise((resolve, reject) => {
-    fetch(url).then((data) => {
-      resolve(data.text());
-    });
-  });
-  return request;
 };
 
 const findRelisData = (el) => {
   let relisData = { release_dates: [{ certification: 'R' }] };
   let certification;
   el = el.results.find((item) => item['iso_3166_1'] === 'US') || relisData;
-  // el = el['release_dates'] || certification;
   for (const item of el['release_dates']) {
     if (item['certification'] !== '') {
       certification = item['certification'];
       break;
     }
   }
-  // return el.results.find((item) => item['iso_3166_1'] === 'US')[
-  //   'release_dates'
-  // ][0];
   return certification;
 };
 
-let allInfoMovie = requestTMD(URLInfoMovie);
-let reliseData = requestTMD(URLRelisData);
-let movieVideo = requestTMD(URLMovieVideo);
+let allInfoMovie = requestTMD(
+  ['movies_details', 'api_key', 'language'],
+  idMovie
+);
+let reliseData = requestTMD(['release_dates', 'api_key'], idMovie);
+let movieVideo = requestTMD(['movies_videos', 'api_key', 'language'], idMovie);
 
 Promise.all([allInfoMovie, reliseData, movieVideo]).then((responses) => {
-  let responsesJSON = responses.map((el) => JSON.parse(el));
   containerBanner.insertAdjacentHTML(
     'beforeend',
     renderBanner(
-      responsesJSON[0],
-      findRelisData(responsesJSON[1]),
-      responsesJSON[2].results[0]
+      responses[0],
+      findRelisData(responses[1]),
+      responses[2].results[0]
     )
   );
 });

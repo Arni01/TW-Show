@@ -361,17 +361,17 @@ button {
   margin-bottom: 5.3rem;
   justify-content: space-between;
 
-  &-item {
-    flex: 0 0 calc((100% / 4) - 8rem);
-  }
+  // &-item {
+  //   flex: 0 0 calc((100% / 4) - 8rem);
+  // }
 
   &__link {
     display: flex;
     flex-direction: column;
     position: relative;
     text-decoration: none;
-    width: 33rem;
-    height: 25rem;
+    width: 20rem;
+    height: 33.3rem;
     overflow: hidden;
     border-radius: 2.1rem;
     box-shadow: none;
@@ -453,7 +453,7 @@ button {
 
       text-overflow: ellipsis;
       display: -webkit-box;
-      -webkit-line-clamp: 8;
+      -webkit-line-clamp: 13;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
