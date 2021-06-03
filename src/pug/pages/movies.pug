@@ -8,20 +8,24 @@ html(lang="en")
     title
   body 
     include ../includes/modules/header
-    section.section.section__movies
-      .container.container__category
+    section.section
+      .container
         .category
-          .ul.sort
-            li.sort-item 
-              a(href="#").sort-item__link.active Movies
-            li.sort-item 
-              a(href="#").sort-item__link TV
-            li.sort-item 
-              a(href="#").sort-item__link 
-            li.sort-item 
-              a(href="#").sort-item__link TV
-            li.sort-item 
-              a(href="#").sort-item__link TV
+          a(href="#").category-item.active Movies
+          a(href="#").category-item TV
+        .sort.active 
+          .selected.active 
+            snap топ по рейтингу
+          ul.sort-list 
+            li топ по рейтингу
+            li по дате
+            li по просмотрам
+            li Топ по рейтингу
+            li Топ по рейтингу
+            
+
+    section.section.section__movies
+      .container        
         .movies 
           .movies-item 
             a(href="#").movies__link
@@ -50,75 +54,16 @@ html(lang="en")
                   span.movies__info-year 2020
                   span.movies__info-rating.rating 1
                   p.movies__info-overview Ему предстоит выяснить, является ли происходящее божественным провидением или Алисой управляют зловещие силы.
-          .movies-item 
-            a(href="#").movies__link
-              h3.movies__title Movie After
-              .movies__img
-                img(src="./assets/images/movie_1.jpg", alt="Movie After")
-                .movies__info.active-link 
-                  span.movies__info-year 2020
-                  span.movies__info-rating.rating 1
-                  p.movies__info-overview Ему предстоит выяснить, является ли происходящее божественным провидением или Алисой управляют зловещие силы.
-          .movies-item 
-            a(href="#").movies__link
-              h3.movies__title Movie After
-              .movies__img
-                img(src="./assets/images/movie_1.jpg", alt="Movie After")
-                .movies__info.active-link 
-                  span.movies__info-year 2020
-                  span.movies__info-rating.rating 1
-                  p.movies__info-overview Ему предстоит выяснить, является ли происходящее божественным провидением или Алисой управляют зловещие силы.
-          .movies-item 
-            a(href="#").movies__link
-              h3.movies__title Movie After
-              .movies__img
-                img(src="./assets/images/movie_1.jpg", alt="Movie After")
-                .movies__info.active-link 
-                  span.movies__info-year 2020
-                  span.movies__info-rating.rating 1
-                  p.movies__info-overview Ему предстоит выяснить, является ли происходящее божественным провидением или Алисой управляют зловещие силы.
-          .movies-item 
-            a(href="#").movies__link
-              h3.movies__title Movie After
-              .movies__img
-                img(src="./assets/images/movie_1.jpg", alt="Movie After")
-                .movies__info.active-link 
-                  span.movies__info-year 2020
-                  span.movies__info-rating.rating 1
-                  p.movies__info-overview Ему предстоит выяснить, является ли происходящее божественным провидением или Алисой управляют зловещие силы.
-          .movies-item 
-            a(href="#").movies__link
-              h3.movies__title Movie After
-              .movies__img
-                img(src="./assets/images/movie_1.jpg", alt="Movie After")
-                .movies__info.active-link 
-                  span.movies__info-year 2020
-                  span.movies__info-rating.rating 1
-                  p.movies__info-overview Ему предстоит выяснить, является ли происходящее божественным провидением или Алисой управляют зловещие силы.
-          .movies-item 
-            a(href="#").movies__link
-              h3.movies__title Movie After
-              .movies__img
-                img(src="./assets/images/movie_1.jpg", alt="Movie After")
-                .movies__info.active-link 
-                  span.movies__info-year 2020
-                  span.movies__info-rating.rating 1
-                  p.movies__info-overview Ему предстоит выяснить, является ли происходящее божественным провидением или Алисой управляют зловещие силы.
-          .movies-item 
-            a(href="#").movies__link
-              h3.movies__title Movie After
-              .movies__img
-                img(src="./assets/images/movie_1.jpg", alt="Movie After")
-                .movies__info.active-link 
-                  span.movies__info-year 2020
-                  span.movies__info-rating.rating 1
-                  p.movies__info-overview Ему предстоит выяснить, является ли происходящее божественным провидением или Алисой управляют зловещие силы.
-          .movies-item 
-            a(href="#").movies__link
-              h3.movies__title Movie After
-              .movies__img
-                img(src="./assets/images/movie_1.jpg", alt="Movie After")
-                .movies__info.active-link 
-                  span.movies__info-year 2020
-                  span.movies__info-rating.rating 1
-                  p.movies__info-overview Ему предстоит выяснить, является ли происходящее божественным провидением или Алисой управляют зловещие силы.
+    section.section.pagination
+      .container
+        .pagination-nav
+          span Раньше
+          span 1
+          a(href='#') 2
+          a(href='#') 3
+          a(href='#') 4
+          a(href='#') 5
+          a(href='#') Позже
+    include ../includes/modules/footer
+          
+        
