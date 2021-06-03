@@ -35,6 +35,14 @@ const plugins = () => {
           from: path.resolve(__dirname, 'src/assets/images'),
           to: path.resolve(__dirname, 'dist/assets/images'),
         },
+        {
+          from: path.resolve(__dirname, 'src/.htaccess'),
+          to: path.resolve(__dirname, 'dist'),
+        },
+        {
+          from: path.resolve(__dirname, 'src/404.php'),
+          to: path.resolve(__dirname, 'dist'),
+        },
       ],
     }),
     new MiniCssExtractPlugin({
@@ -44,19 +52,19 @@ const plugins = () => {
       template: `${PAGES_DIR}/index.pug`,
       filename: `./index.html`,
       pretty: true,
-      chunks: ['index'],
+      chunks: ['request', 'index'],
     }),
     new HTMLWebpackPlugin({
       template: `${PAGES_DIR}/movie.pug`,
       filename: `./movie.html`,
       pretty: true,
-      chunks: ['movie'],
+      chunks: ['request', 'movie'],
     }),
     new HTMLWebpackPlugin({
       template: `${PAGES_DIR}/movies.pug`,
       filename: `./movies.html`,
       pretty: true,
-      chunks: ['movies'],
+      chunks: ['request', 'movies'],
     }),
   ];
 
@@ -70,8 +78,10 @@ module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
   entry: {
+    request: './js/module/request.js',
     index: './index.js',
     movie: './js/movie.js',
+    movies: './js/movies.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
