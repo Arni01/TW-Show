@@ -9,21 +9,18 @@ html(lang="en")
   body 
     include ../includes/modules/header
     section.section
-      .container
+      .container.container-sort
         .category
           a(href="#").category-item.active Movies
           a(href="#").category-item TV
         .sort.active 
-          .selected.active 
-            snap топ по рейтингу
-          ul.sort-list 
-            li топ по рейтингу
-            li по дате
-            li по просмотрам
-            li Топ по рейтингу
-            li Топ по рейтингу
+          .sort-selected 
+            span топ по рейтингу
+          .sort-list 
+            p.current топ по рейтингу
+            p по дате
+            p по просмотрам
             
-
     section.section.section__movies
       .container        
         .movies 

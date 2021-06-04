@@ -20,6 +20,10 @@ body {
   font-size: 1.8rem;
 }
 
+a {
+  text-decoration: none;
+}
+
 button {
   &:focus {
     outline: none;
@@ -73,23 +77,41 @@ button {
       transition: 0.2s ease color;
     }
 
-    &.active {
-      color: rgba($white, 1);
-      position: relative;
-      &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: -0.8rem;
-        display: block;
-        height: 0.2rem;
-        margin-top: 0.5rem;
-        background: $bg-gradient-safe;
-        background: $bg-gradient;
-        border-radius: 5rem;
-      }
-    }
+    // &.active {
+    //   color: rgba($white, 1);
+    //   position: relative;
+    //   &::after {
+    //     content: '';
+    //     position: absolute;
+    //     left: 0;
+    //     right: 0;
+    //     bottom: -0.8rem;
+    //     display: block;
+    //     height: 0.2rem;
+    //     margin-top: 0.5rem;
+    //     background: $bg-gradient-safe;
+    //     background: $bg-gradient;
+    //     border-radius: 5rem;
+    //   }
+    // }
+  }
+}
+
+.active {
+  color: rgba($white, 1);
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.5rem;
+    display: block;
+    height: 0.2rem;
+    margin-top: 0.5rem;
+    background: $bg-gradient-safe;
+    background: $bg-gradient;
+    border-radius: 5rem;
   }
 }
 
@@ -659,19 +681,50 @@ footer {
   }
 }
 
-.category {
-  .sort {
+.container-sort {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5rem;
+
+  .category {
+    padding: 1rem;
     display: flex;
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
+    flex-direction: column;
+    min-width: 7rem;
+    align-items: center;
+    gap: 1.5rem;
 
     &-item {
-      &__link {
-        text-decoration: none;
-        color: $white;
-        font-size: 1.6rem;
-      }
+      color: $white;
+      display: block;
+    }
+  }
+}
+.sort {
+  position: relative;
+
+  &-selected {
+    display: block;
+  }
+
+  &-list {
+    // margin: 0;
+    // padding: 0;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    // flex-wrap: nowrap;
+    // gap: 0.5rem;
+    // width: 30rem;
+    top: 0;
+    left: 100%;
+
+    p {
+      display: inline-block;
+      padding: 0;
+      margin: 0;
     }
   }
 }
