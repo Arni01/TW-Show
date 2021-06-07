@@ -11,15 +11,28 @@ html(lang="en")
     section.section
       .container.container-sort
         .category
-          a(href="#").category-item.active Movies
-          a(href="#").category-item TV
-        .sort.active 
-          .sort-selected 
-            span топ по рейтингу
-          .sort-list 
-            p.current топ по рейтингу
-            p по дате
-            p по просмотрам
+          .category-item
+            input(type="radio", name="category" id="movie" checked)
+            label(for="movie") Movies
+          .category-item 
+            input(type="radio", name="category" id="tv")
+            label(for="tv") TV
+        .sort 
+            .sort-list 
+              input(type="radio", name="sort" id="popularity" checked)
+              label(for="popularity") топ по рейтингу
+              input(type="checkbox", name="sort-des" id="popularity-des" checked)
+              label(for="popularity-des").sort-list__des
+            .sort-list 
+              input(type="radio", name="sort" id="release_data")
+              label(for="release_data") по дате
+              input(type="checkbox", name="sort-des" id="release_data-des" checked)
+              label(for="release_data-des").sort-list__des
+            .sort-list 
+              input(type="radio", name="sort" id="vote_average")
+              label(for="vote_average") по просмотрам
+              input(type="checkbox", name="sort-des" id="vote_average-des" checked)
+              label(for="vote_average-des").sort-list__des
             
     section.section.section__movies
       .container        
