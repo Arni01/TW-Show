@@ -1,0 +1,21 @@
+header 
+  .header 
+    a(href="index.html")
+      img(src="./assets/images/logo.svg", alt="Logo")
+    nav 
+      ul.nav
+        li.nav-item 
+          a(href="index.html").nav-link.active Home
+        //- li.nav-item 
+        //-   a(href="/movies?page=1&type=tv").nav-link TV Shows
+        li.nav-item 
+          a(href="movies.html?page=1").nav-link Movies
+        li.nav-item 
+          a(href="#").nav-link Series
+    ul.control 
+        li.control-item 
+          button.control-btn.control-btn_search
+        li.control-item 
+          button.control-btn.control-btn_notice
+        li.control-item 
+          button.control-btn.control-btn_account

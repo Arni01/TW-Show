@@ -8,16 +8,22 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
 
+const fs = require('fs');
+const PATHS = {
+  src: path.join(__dirname, './src'),
+  dist: path.join(__dirname, './dist'),
+  assets: 'assets/',
+};
+
+const PAGES_DIR = `${PATHS.src}/pug/pages/`;
+const PAGES = fs
+  .readdirSync(PAGES_DIR)
+  .filter((fileName) => fileName.endsWith('.pug'));
+
 const filename = (ext) => (isDev ? `[name].${ext}` : `[name].[hash].${ext}`);
 
 const plugins = () => {
   const base = [
-    new HTMLWebpackPlugin({
-      template: './index.html',
-      // minify: {
-      //   collapseWhitespace: isProd,
-      // },
-    }),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
@@ -25,27 +31,64 @@ const plugins = () => {
           from: path.resolve(__dirname, 'src/favicon.ico'),
           to: path.resolve(__dirname, 'dist'),
         },
+        {
+          from: path.resolve(__dirname, 'src/assets/images'),
+          to: path.resolve(__dirname, 'dist/assets/images'),
+        },
+        {
+          from: path.resolve(__dirname, 'src/.htaccess'),
+          to: path.resolve(__dirname, 'dist'),
+        },
+        {
+          from: path.resolve(__dirname, 'src/404.php'),
+          to: path.resolve(__dirname, 'dist'),
+        },
       ],
     }),
     new MiniCssExtractPlugin({
-      filename: filename('.css'),
+      filename: filename('css'),
+    }),
+    new HTMLWebpackPlugin({
+      template: `${PAGES_DIR}/index.pug`,
+      filename: `./index.html`,
+      pretty: true,
+      chunks: ['request', 'index'],
+    }),
+    new HTMLWebpackPlugin({
+      template: `${PAGES_DIR}/movie.pug`,
+      filename: `./movie.html`,
+      pretty: true,
+      chunks: ['request', 'movie'],
+    }),
+    new HTMLWebpackPlugin({
+      template: `${PAGES_DIR}/movies.pug`,
+      filename: `./movies.html`,
+      pretty: true,
+      chunks: ['request', 'movies'],
     }),
   ];
 
-  if (isProd) {
-    base.push(new BundleAnalyzerPlugin());
-  }
+  // if (isProd) {
+  //   base.push(new BundleAnalyzerPlugin());
+  // }
   return base;
 };
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
-  entry: './app.js',
+  entry: {
+    request: './js/module/request.js',
+    index: './index.js',
+    movie: './js/movie.js',
+    movies: './js/movies.js',
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: filename('.js'),
+    filename: filename('js'),
+    // library: '[name]',
   },
+  devtool: 'eval',
   devServer: {
     port: 4200,
   },
@@ -70,6 +113,15 @@ module.exports = {
       {
         test: /\.(ttf|woff|woff2|eot)$/,
         use: ['file-loader'],
+      },
+      {
+        test: /\.pug$/,
+        use: {
+          loader: 'pug-loader',
+          options: {
+            pretty: isDev,
+          },
+        },
       },
     ],
   },

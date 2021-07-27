@@ -1,0 +1,79 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="icon" href="favicon.ico" type="image/ico")
+    title
+  body 
+    include ../includes/modules/header
+    //- section.section
+    //-   .container.container-sort
+        //- .category
+        //-   .category-item
+        //-     input(type="radio", name="category" id="movie" checked)
+        //-     label(for="movie") Movies
+        //-   .category-item 
+        //-     input(type="radio", name="category" id="tv")
+        //-     label(for="tv") TV
+        .sort 
+            .sort-list 
+              input(type="radio", name="sort" id="popularity" checked)
+              label(for="popularity") топ по рейтингу
+              input(type="checkbox", name="sort-des" id="popularity-des" checked)
+              label(for="popularity-des").sort-list__des
+            .sort-list 
+              input(type="radio", name="sort" id="release_data")
+              label(for="release_data") по дате
+              input(type="checkbox", name="sort-des" id="release_data-des" checked)
+              label(for="release_data-des").sort-list__des
+            .sort-list 
+              input(type="radio", name="sort" id="vote_average")
+              label(for="vote_average") по просмотрам
+              input(type="checkbox", name="sort-des" id="vote_average-des" checked)
+              label(for="vote_average-des").sort-list__des
+            
+    section.section.section__movies.section__movies-all
+      .container        
+        .movies.movies-all
+          //- .movies-item 
+          //-   a(href="#").movies__link
+          //-     h3.movies__title Movie After
+          //-     .movies__img
+          //-       img(src="./assets/images/movie_1.jpg", alt="Movie After")
+          //-       .movies__info.active-link 
+          //-         span.movies__info-year 2020
+          //-         span.movies__info-rating.rating 1
+          //-         p.movies__info-overview Ему предстоит выяснить, является ли происходящее божественным провидением или Алисой управляют зловещие силы.
+          //- .movies-item 
+          //-   a(href="#").movies__link
+          //-     h3.movies__title Movie After
+          //-     .movies__img
+          //-       img(src="./assets/images/movie_1.jpg", alt="Movie After")
+          //-       .movies__info.active-link 
+          //-         span.movies__info-year 2020
+          //-         span.movies__info-rating.rating 1
+          //-         p.movies__info-overview Ему предстоит выяснить, является ли происходящее божественным провидением или Алисой управляют зловещие силы.
+          //- .movies-item 
+          //-   a(href="#").movies__link
+          //-     h3.movies__title Movie After
+          //-     .movies__img
+          //-       img(src="./assets/images/movie_1.jpg", alt="Movie After")
+          //-       .movies__info.active-link 
+          //-         span.movies__info-year 2020
+          //-         span.movies__info-rating.rating 1
+          //-         p.movies__info-overview Ему предстоит выяснить, является ли происходящее божественным провидением или Алисой управляют зловещие силы.
+    section.section.pagination
+      .container
+        .pagination-nav
+          //- span Раньше
+          //- span 1
+          //- a(href='movies.html?page=2') 2
+          //- a(href='movies.html?page=3') 3
+          //- a(href='#') 4
+          //- a(href='#') 5
+          //- a(href='#') Позже
+    include ../includes/modules/footer
+          
+        
