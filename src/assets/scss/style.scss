@@ -42,15 +42,16 @@ button {
   max-height: 7rem;
   margin: 0 auto;
   padding: 1.5rem;
+  justify-content: space-between;
 }
 
 .header a > img {
   display: block;
 }
 
-.header nav {
-  margin-left: 36.7rem;
-}
+// .header nav {
+//   margin-left: 36.7rem;
+// }
 
 .nav {
   margin: 0;
@@ -116,7 +117,7 @@ button {
 }
 
 .control {
-  margin-left: auto;
+  // margin-left: auto;
   display: flex;
   align-items: center;
   list-style: none;
@@ -157,6 +158,11 @@ button {
 .section {
   &__movies {
     margin-bottom: 11rem;
+
+    &-all {
+      margin-bottom: 5rem;
+      margin-top: 5rem;
+    }
   }
 
   &__title {
@@ -494,6 +500,13 @@ button {
   }
 }
 
+.movies-all {
+  .movies__link {
+    width: 21rem;
+    height: 37.3rem;
+  }
+}
+
 .section__genres {
   margin-bottom: 12.1rem;
 }
@@ -769,12 +782,21 @@ footer {
 }
 
 .pagination {
-  margin-bottom: 3rem;
+  margin-bottom: 5rem;
 
   &-nav {
     display: flex;
     justify-content: space-between;
     max-width: 30rem;
     margin: 0 auto;
+
+    .nav-link,
+    span {
+      display: block;
+      padding: 5px;
+    }
+    span {
+      color: rgba($white, 0.5);
+    }
   }
 }

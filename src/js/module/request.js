@@ -57,4 +57,26 @@ export function requestTMD(arr, id, page) {
   return request;
 }
 
+export function renderMovie(movie) {
+  return `<div class="movies-item"> 
+            <a class="movies__link" href="movie.html?id=${movie.id}">
+              <h3 class="movies__title">${movie.title || movie.name}</h3>
+              <div class="movies__img">
+                <img src="${small + movie.poster_path}" alt="${
+    movie.title || movie.name
+  }">
+                <div class="movies__info active-link"> 
+                  <span class="movies__info-year">${
+                    movie.release_date || movie.first_air_date
+                  }</span>
+                  <span class="movies__info-rating rating">${
+                    movie.vote_average
+                  }</span>
+                  <p class="movies__info-overview">${movie.overview}</p>
+                </div>
+              </div>              
+            </a>
+          </div>`;
+}
+
 export default { original, small };
