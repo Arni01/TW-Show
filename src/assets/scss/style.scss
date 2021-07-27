@@ -49,10 +49,6 @@ button {
   display: block;
 }
 
-// .header nav {
-//   margin-left: 36.7rem;
-// }
-
 .nav {
   margin: 0;
   margin-top: 2.5rem;
@@ -77,24 +73,6 @@ button {
       color: rgba($white, 1);
       transition: 0.2s ease color;
     }
-
-    // &.active {
-    //   color: rgba($white, 1);
-    //   position: relative;
-    //   &::after {
-    //     content: '';
-    //     position: absolute;
-    //     left: 0;
-    //     right: 0;
-    //     bottom: -0.8rem;
-    //     display: block;
-    //     height: 0.2rem;
-    //     margin-top: 0.5rem;
-    //     background: $bg-gradient-safe;
-    //     background: $bg-gradient;
-    //     border-radius: 5rem;
-    //   }
-    // }
   }
 }
 
@@ -117,7 +95,6 @@ button {
 }
 
 .control {
-  // margin-left: auto;
   display: flex;
   align-items: center;
   list-style: none;
@@ -209,11 +186,9 @@ button {
 
 .section-banner {
   border-bottom: 0.2rem solid #2f2e2e;
-  // margin-bottom: 6.9rem;
 }
 
 .container-banner {
-  // position: relative;
   align-items: center;
   height: 76.5rem;
   overflow: hidden;
@@ -222,9 +197,6 @@ button {
 
   &_image {
     position: relative;
-    // display: block;
-    // right: -6rem;
-    // top: 0;
     height: 100%;
     z-index: -1;
     flex-grow: 1;
@@ -265,15 +237,10 @@ button {
 }
 
 .banner {
-  // position: absolute;
   flex-grow: 1;
   max-width: 55.9rem;
-  // top: 0;
-  // bottom: 0;
-  // left: 0;
   padding-left: 1.6rem;
   margin-right: 2.9rem;
-  // padding-top: 12.1rem;
   background: #010101;
   box-shadow: 100px 0px 100px #000000;
 
@@ -388,10 +355,6 @@ button {
   gap: 4rem;
   margin-bottom: 5.3rem;
   justify-content: space-between;
-
-  // &-item {
-  //   flex: 0 0 calc((100% / 4) - 8rem);
-  // }
 
   &__link {
     display: flex;
@@ -733,7 +696,6 @@ footer {
 
     &-item {
       color: rgba($white, 0.5);
-      // display: block;
     }
   }
 }
@@ -759,10 +721,6 @@ footer {
     input[type='radio']:not(:checked) ~ label:last-of-type {
       display: none;
     }
-
-    // input[type='radio'] ~ label:first-of-type {
-    //   margin-right: 3rem;
-    // }
 
     &__des {
       position: relative;
